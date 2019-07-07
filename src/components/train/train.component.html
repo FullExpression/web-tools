@@ -1,0 +1,54 @@
+<div class="train" [ngClass]="{'training-mode': trainingMode}">
+    <div class="tool" *ngIf="!isLoading">
+        <div class="first-line line" *ngIf="trainingMode">
+            <div class="done">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                </div>
+                <div class="text">
+                    Training Finished
+                </div>
+            </div>
+        </div>
+        <div class="second-line line">
+            <div class="training-button">
+                <button mat-raised-button (click)="training()" *ngIf="!trainingMode">Start Training</button>
+            </div>
+            <div class="download">
+                <button mat-raised-button (click)="download()" *ngIf="trainingMode">Download</button>
+            </div>
+            <div class="tran-again">
+                <button mat-raised-button (click)="trainAgain()" *ngIf="trainingMode">Train Again</button>
+            </div> 
+        </div>
+     
+                
+    </div>
+    <div class="import-images" *ngIf="!trainingMode">
+        <div class="afraid import-line">
+            <train-import-images [title]="'Afraid'" (onImportedImages)="importAfraidImages($event)"></train-import-images>
+        </div>
+        <div class="angry import-line">
+            <train-import-images [title]="'Angry'" (onImportedImages)="importAngryImages($event)"></train-import-images>
+        </div>
+        <div class="Disgusted import-line">
+            <train-import-images [title]="'Disgusted'" (onImportedImages)="importDisgustedImages($event)"></train-import-images>
+        </div>
+        <div class="Happy import-line">
+            <train-import-images [title]="'Happy'" (onImportedImages)="importHappyImages($event)"></train-import-images>
+        </div>
+        <div class="Neutral import-line">
+            <train-import-images [title]="'Neutral'" (onImportedImages)="importNeutralImages($event)"></train-import-images>
+        </div>
+        <div class="Sad import-line">
+            <train-import-images [title]="'Sad'" (onImportedImages)="importSadImages($event)"></train-import-images>
+        </div>
+        <div class="Suprised import-line">
+            <train-import-images [title]="'Suprised'" (onImportedImages)="importSuprisedImages($event)"></train-import-images>
+        </div>
+    </div>
+    <div class="loading-wrapper" *ngIf="isLoading">
+        <loading [message]="loadingMessage"></loading>
+    </div>
+    <!-- <img id="cat" src="../../assets/images/Happy-Ricardo.png"> -->
+</div>

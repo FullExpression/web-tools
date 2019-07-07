@@ -1,0 +1,107 @@
+.main-application {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    .loading-wrapper{
+        width: 100%;
+        height: 100%;
+    }
+    .image-upload-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+
+        .import-images-component {
+            width: calc(100% - 40px);
+            height: calc(100% - 40px);
+            padding: 20px;
+        
+        }
+    }
+    .web-cam{
+        width: 300px;
+        height: 300px;
+    }
+    .face-detection {
+        display: flex;
+    }
+    .images {
+        .image {
+            img {
+                width: 150px;
+                height: 150px;
+            }
+
+        }
+    }
+    .normalized-images {
+        .refresh-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-right: 6px;
+        }
+    }
+    .faces,
+    .normalized-images,
+    .images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        flex: 1;
+        width: 30%;
+        float: left;
+        /* border: 1px solid black; */
+        margin: 0.5%;
+        background-color: #f3f3f3;
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        padding: 1%;
+        .header {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image,
+        .face,
+        .normalized-image{
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            padding: 5px;
+            margin: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .progressive-loading {
+
+    }
+    .tool-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 60px;
+        margin-top: 20px;
+        button {
+            margin: 20px;
+        }
+    }
+    .image-statistics {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin: 10px;
+        border-bottom: 1px solid #cecece;
+        border-style: dotted;
+        border-width: 2px;
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+        
+    }
+}

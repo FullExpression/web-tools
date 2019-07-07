@@ -1,0 +1,13 @@
+<div class="data-augmentation-wrapper">
+    <div class="tools">
+        <mat-form-field class="example-full-width">
+            <input matInput type="number" placeholder="Number Total of Images" value="0" (input)="totalNumberOfImagesChanged($event)">
+        </mat-form-field>
+        <button mat-raised-button (click)="downloadImages()">Download Images</button>
+    </div>
+    <div class="content">
+        <div class="import-image-wrapper" fadeInAnimation>
+            <import-images (importedImages)="importedImages($event)"></import-images>
+        </div>
+    </div>
+</div>

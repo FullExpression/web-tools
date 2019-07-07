@@ -1,0 +1,48 @@
+.test-model{
+    width: 100%;
+    height: 100%;   
+    
+    .import-images {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        .tools {
+            width: 100%;
+            height:50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .cnns {
+                padding: 15px;
+            }
+
+        }
+        
+        .import-line {
+            width: 230px;
+            height: 230px;
+            padding: 20px;
+        }
+    }
+    .results {
+        .tools {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+        }
+        .content-wrapper{
+            display: flex;
+            flex-direction: row;
+            .board {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+    }
+    .loading-wrapper{
+        width: 100%;
+        height: 100%;
+    }
+}

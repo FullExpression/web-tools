@@ -1,0 +1,10 @@
+<div class="import-images-component">
+    <div class="header">
+        {{title}} ({{images.length}} images imported)
+    </div>
+    <div class="body">
+        <div class="import-images-wrapper">
+            <import-images (importedImages)="importedImages($event)"></import-images>
+        </div>
+    </div>
+</div>
