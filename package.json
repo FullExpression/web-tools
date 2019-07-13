@@ -28,7 +28,7 @@
         "@angular/router": "^8.0.3",
         "@fullexpression/confusionmatrix": "file:../../dist/fullexpressionconfusionmatrix",
         "@fullexpression/core": "file:../../dist/fullexpressioncore",
-        "@fullexpression/emotionclassification": "file:../../dist/emotionclassification",
+        "@fullexpression/emotionclassification": "file:../../dist/fullexpressionemotionclassification",
         "@tensorflow-models/knn-classifier": "^1.1.0",
         "@tensorflow-models/mobilenet": "^1.0.1",
         "@tensorflow/tfjs": "^1.1.2",
