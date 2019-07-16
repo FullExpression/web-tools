@@ -8,7 +8,7 @@
     },
     "include": [
         "src/**/*.ts",
-        "node_modules/@fullexpression/confusionmatrix",
+        "node_modules/@fullexpression/confusionmatrix/index.ts",
         "node_modules/@fullexpression/emotionclassification",
         "node_modules/@fullexpression/core"
     ],
