@@ -6,7 +6,7 @@
         <div class="tools">
             <div class="cnns">
                 <select [(ngModel)]="cnnSelectOption">
-                    <option *ngFor="let item of cnnsEnum | keys" [value]="item.key">{{item.value}}</option>
+                    <option *ngFor="let item of modelsArray" [value]="item">{{item}}</option>
                 </select>
             </div>
             <div class="start-testing">
@@ -63,9 +63,10 @@
                 </numeric-board>
                 <numeric-board text="Happy Accuracy" value="{{accuracies.Happy | number:'1.0-1'}}"></numeric-board>
                 <numeric-board text="Neutral Accuarcy" value="{{accuracies.Neutral | number:'1.0-1'}}"></numeric-board>
-                <numeric-board text="Sad Accuracy" value="{{accuracies.Sad | number:'1.0-1'}}"></numeric-board>
-                <numeric-board text="Suprised Accuracy" value="{{accuracies.Suprised | number:'1.0-1'}}">
-                </numeric-board>
+                <numeric-board text="Sad Accuracy" value="{{accuracies.Sad | number:'1.0-1'}}"></numeric-board>         
+                <numeric-board text="Suprised Accuracy" value="{{accuracies.Suprised | number:'1.0-1'}}"></numeric-board>
+                <numeric-board text="Duration" value="{{duration | number:'1.0-1'}}"></numeric-board>
+      
             </div>
         </div>
 

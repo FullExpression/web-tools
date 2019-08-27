@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { EmotionService } from '@fullexpression/emotionclassification';
 import { ConfusionMatrix } from '@fullexpression/confusionmatrix';
 import { PredictionResults } from '@fullexpression/emotionclassification';
-import { CnnEnum } from '@fullexpression/emotionclassification';
+import models from './models.json';
 
 @Component({
     selector: 'test--model',
@@ -19,10 +19,13 @@ export class TestModelComponent {
     private neutralImages = new Array<string>();
     private sadImages = new Array<string>();
     private suprisedImages = new Array<string>();
+
     private loadingMessage = "";
+    modelsArray = models;
     isLoading = false;
     testMode = false;
     cnnSelectOption = "";
+        duration = 0;
     private accuracies = {
         Afraid: 0,
         Angry: 0,
@@ -111,10 +114,13 @@ export class TestModelComponent {
             [1, 2, 3, 70, 60, 50, 7]
         ]
     }
-    private cnnsEnum = CnnEnum;
+
     constructor(private cnnService: CNNService,
         private emotionService: EmotionService,
-        private changeDetectorRef: ChangeDetectorRef) { }
+        private changeDetectorRef: ChangeDetectorRef) {
+            console.log("models");
+            console.log(this.modelsArray);
+        }
 
     testAgain(): void {
         this.testMode = false;
@@ -152,7 +158,7 @@ export class TestModelComponent {
         this.testMode = true;
         this.isLoading = true;
         this.loadingMessage = "Loading Model";
-        this.emotionService.initialize().subscribe(() => {
+        this.emotionService.initialize(undefined, this.cnnSelectOption).subscribe(() => {
             this.startClassifyingImages();
         });
     }
@@ -160,6 +166,7 @@ export class TestModelComponent {
     startClassifyingImages(): void {
         this.loadingMessage = "Classifying emotions";
         this.confusionMatrix.matrix = new Array<Array<number>>();
+        let startDate = new Date();
         this.getEmotions("Afraid", this.afraidImages).subscribe((afraidResult) => {
             this.confusionMatrix.matrix.push(afraidResult.toArray());
             this.getEmotions("Angry", this.angryImages).subscribe((angryResult) => {
@@ -174,7 +181,7 @@ export class TestModelComponent {
                                 this.confusionMatrix.matrix.push(sadResult.toArray());
                                 this.getEmotions("Suprised", this.suprisedImages).subscribe((supriseResult) => {
                                     this.confusionMatrix.matrix.push(supriseResult.toArray());
-                                    this.calculateMetrics();
+                                    this.calculateMetrics((new Date().getTime() - startDate.getTime()) as  number);
                                     this.isLoading = false;
                                 });
                             });
@@ -213,7 +220,8 @@ export class TestModelComponent {
             }
         });
     }
-    private calculateMetrics(): void {
+    private calculateMetrics(time: number): void {
+        this.duration = time;
         let totalAfraid = this.confusionMatrix.matrix[0].reduce((a, b) => a + b, 0);
         let totalAngry = this.confusionMatrix.matrix[1].reduce((a, b) => a + b, 0);
         let totalDisgusted = this.confusionMatrix.matrix[2].reduce((a, b) => a + b, 0);
